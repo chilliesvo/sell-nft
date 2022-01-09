@@ -1,10 +1,10 @@
 // Loading env configs for deploying and public contract source
-require('dotenv').config();
+require("dotenv").config();
 
 // Using hardhat-ethers plugin for deploying
 // See here: https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html
 //           https://hardhat.org/guides/deploying.html
-require('@nomiclabs/hardhat-ethers');
+require("@nomiclabs/hardhat-ethers");
 
 // Testing plugins with Waffle
 // See here: https://hardhat.org/guides/waffle-testing.html
@@ -15,7 +15,7 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-solhint");
 
 // Verify and public source code on etherscan
-require('@nomiclabs/hardhat-etherscan');
+require("@nomiclabs/hardhat-etherscan");
 
 const config = {
   defaultNetwork: "hardhat",
@@ -30,21 +30,12 @@ const config = {
       gas: 8100000,
       gasPrice: 8000000000,
     },
-    // Polygon test network config for deploying
-    mumbai: {
-      url: process.env.MUMBAI_URL,
-      accounts: [process.env.PRIVATE_KEY_MUMBAI],
-    },
   },
   // Verify and public source code on etherscan
   etherscan: {
     // etherscan
-    apiKey: `${process.env.ETHERSCAN_API_KEY}`
+    apiKey: `${process.env.ETHERSCAN_API_KEY}`,
   },
-  // etherscan: {
-  //   // polygonscan
-  //   apiKey: process.env.POLYGONSCAN_API_KEY,
-  // },
   solidity: {
     compilers: [
       {
@@ -64,7 +55,7 @@ const config = {
             runs: 200,
           },
         },
-      }
+      },
     ],
   },
   paths: {
