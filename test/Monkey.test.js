@@ -1,6 +1,5 @@
 const { ethers } = require("hardhat");
 const { expect } = require("chai");
-const fs = require("fs");
 
 const FEE = "50000000000000000";
 
@@ -10,9 +9,11 @@ describe("Monkey", () => {
     admin = accounts[0];
     user1 = accounts[1];
 
-    Monkey = await ethers.getContractFactory("MemberCard");
-    monkey = await MemberCard.deploy("Member Card NFT", "MCN", 3, THREE_MONTHS);
+    Monkey = await ethers.getContractFactory("Monkey");
+    monkey = await Monkey.deploy("MonkeyNFT", "MK");
   });
 
-  describe("Deployment 1 : Check basic info", () => {});
+  describe("Deployment 1 : Check basic info", () => {
+    //DO SOMETHING
+  });
 });
