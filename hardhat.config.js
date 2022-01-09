@@ -26,7 +26,7 @@ const config = {
     // Rinkeby test network config for deploying
     rinkeby: {
       url: process.env.RINKEBY_URL,
-      accounts: [`${process.env.PRIVATE_KEY_RINKEBY}`],
+      accounts: [process.env.PRIVATE_KEY_RINKEBY],
       gas: 8100000,
       gasPrice: 8000000000,
     },

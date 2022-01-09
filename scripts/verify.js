@@ -1,14 +1,15 @@
 const hre = require("hardhat");
-const fs = require("fs");
-const text = fs.readFileSync("scripts/contracts.json", "utf8");
-const contractAddress = JSON.parse(text);
-const { THREE_MONTHS } = require("./deploy");
+const contractAddress = require("./contracts.json");
 
 async function main() {
-  await hre.run("verify:verify", {
-    address: contractAddress.memberCard,
-    constructorArguments: ["Member Card NFT", "MCN", 3, THREE_MONTHS],
-  });
+  try {
+    await hre.run("verify:verify", {
+      address: contractAddress.monkey,
+      constructorArguments: ["MonkeyNFT", "MK"],
+    });
+  } catch (err) {
+    console.log("err :>> ", err);
+  }
 }
 
 main()
