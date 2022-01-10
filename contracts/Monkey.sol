@@ -5,11 +5,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Monkey is ERC721URIStorage, Ownable {
-    struct UseTokenInfo {
-        address owner;
-        uint256 usedAt;
-    }
-
     struct Monkey {
         string name;
     }
@@ -26,18 +21,17 @@ contract Monkey is ERC721URIStorage, Ownable {
         fee = 5e16;
     }
 
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) public override {
-        require(
-            _isApprovedOrOwner(_msgSender(), tokenId),
-            "ERC721: transfer caller is not owner nor approved"
-        );
-        require(balanceOf(to) == 0, "Only have 1 NFT per wallet");
-        _transfer(from, to, tokenId);
-    }
+    // function transferFrom(
+    //     address from,
+    //     address to,
+    //     uint256 tokenId
+    // ) public override {
+    //     require(
+    //         _isApprovedOrOwner(_msgSender(), tokenId),
+    //         "ERC721: transfer caller is not owner nor approved"
+    //     );
+    //     _transfer(from, to, tokenId);
+    // }
 
     function mintToken(string memory name, string memory metadataURI) external payable {
         require(msg.value >= fee, "Invalid value");
