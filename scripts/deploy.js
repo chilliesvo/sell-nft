@@ -18,13 +18,13 @@ async function main() {
 
   // Mint token
   await monkey.mintToken(
-    "Monkey-NFT-1",
+    "Monkey-Animation-1",
     "https://gateway.pinata.cloud/ipfs/QmeCWsDX1rr1Zjs4N8evtqNWRt7VWRsJxWp2cHzfNmdT4x?filename=metadata_monkey_1.json",
     { value: FEE }
   );
 
   await monkey.mintToken(
-    "Monkey-NFT-2",
+    "Monkey-Animation-2",
     "https://gateway.pinata.cloud/ipfs/QmbKjHBPfKoFXWZKAAqDoKyJsUhohEHP2PaZ2p8Z2EAzhD?filename=metadata_monkey_2.json",
     { value: FEE }
   );
