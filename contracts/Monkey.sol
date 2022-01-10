@@ -21,19 +21,19 @@ contract Monkey is ERC721URIStorage, Ownable {
         fee = 5e16;
     }
 
-    // function transferFrom(
-    //     address from,
-    //     address to,
-    //     uint256 tokenId
-    // ) public override {
-    //     require(
-    //         _isApprovedOrOwner(_msgSender(), tokenId),
-    //         "ERC721: transfer caller is not owner nor approved"
-    //     );
-    //     _transfer(from, to, tokenId);
-    // }
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override {
+        require(
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "ERC721: transfer caller is not owner nor approved"
+        );
+        _transfer(from, to, tokenId);
+    }
 
-    function mintToken(string memory name, string memory metadataURI) external payable {
+    function mintToken(string memory name, string memory metadataURI) external payable onlyOwner {
         require(msg.value >= fee, "Invalid value");
         monkeys.push(Monkey(name));
         _safeMint(msg.sender, ++currentTokenId);
@@ -43,7 +43,7 @@ contract Monkey is ERC721URIStorage, Ownable {
         payable(owner()).transfer(msg.value); // solhint-disable-line indent
     }
 
-    function setTokenURI(uint256 tokenId, string memory tokenURI) public {
+    function setTokenURI(uint256 tokenId, string memory tokenURI) public onlyOwner {
         _setTokenURI(tokenId, tokenURI);
     }
 

@@ -19,15 +19,17 @@ async function main() {
   // Mint token
   await monkey.mintToken(
     "Monkey-NFT-1",
-    "http://localhost:8080/ipfs/QmeCWsDX1rr1Zjs4N8evtqNWRt7VWRsJxWp2cHzfNmdT4x?filename=metadata_monkey_1.json",
+    "https://gateway.pinata.cloud/ipfs/QmeCWsDX1rr1Zjs4N8evtqNWRt7VWRsJxWp2cHzfNmdT4x?filename=metadata_monkey_1.json",
     { value: FEE }
   );
 
-  // set tokenUri
-  // console.log("Let's set the tokenURI of your MemberCard");
-  // await monkey.setTokenURI(1, "http://localhost:8080/ipfs/QmeCWsDX1rr1Zjs4N8evtqNWRt7VWRsJxWp2cHzfNmdT4x?filename=metadata_monkey_1.json")
-  // const mk2 = await memberCard.setTokenURI(2, "https://ipfs.io/ipfs/QmXd61Wuj4mhNKHtdKgseZkcTzaTSSbBxYN5F7aaFEpCqx?filename=member-sliver.json")
+  await monkey.mintToken(
+    "Monkey-NFT-2",
+    "https://gateway.pinata.cloud/ipfs/QmbKjHBPfKoFXWZKAAqDoKyJsUhohEHP2PaZ2p8Z2EAzhD?filename=metadata_monkey_2.json",
+    { value: FEE }
+  );
 
+  
   const contractAddresses = {
     monkey: monkey.address,
   };
