@@ -33,14 +33,15 @@ contract Monkey is ERC721URIStorage, Ownable {
         _transfer(from, to, tokenId);
     }
 
-    function mintToken(string memory name, string memory metadataURI) external payable onlyOwner {
+    function mintToken(string memory name, string memory metadataURI) external payable {
         require(msg.value >= fee, "Invalid value");
         monkeys.push(Monkey(name));
         _safeMint(msg.sender, ++currentTokenId);
 
         _setTokenURI(currentTokenId, metadataURI);
-
-        payable(owner()).transfer(msg.value); // solhint-disable-line indent
+        if (owner() != msg.sender) {
+            payable(owner()).transfer(msg.value); // solhint-disable-line indent
+        }
     }
 
     function setTokenURI(uint256 tokenId, string memory tokenURI) public onlyOwner {

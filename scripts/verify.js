@@ -1,11 +1,10 @@
 const hre = require("hardhat");
-const contractAddress = require("./contracts.json");
+const contractAddress = require("../contracts.json");
 
 async function main() {
   try {
     await hre.run("verify:verify", {
       address: contractAddress.monkey,
-      constructorArguments: ["MonkeyNFT", "MK"],
     });
   } catch (err) {
     console.log("err :>> ", err);

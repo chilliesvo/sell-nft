@@ -5,8 +5,8 @@ const FEE = "50000000000000000";
 
 async function main() {
   //Loading accounts
-  // const accounts = await ethers.getSigners();
-  // const addresses = accounts.map((item) => item.address.toString());
+  const accounts = await ethers.getSigners();
+  const addresses = accounts.map((item) => item.address.toString());
 
   // Loading contract factory.
   const Monkey = await ethers.getContractFactory("Monkey");
@@ -35,7 +35,7 @@ async function main() {
   };
 
   await fs.writeFileSync(
-    "scripts/contracts.json",
+    "contracts.json",
     JSON.stringify(contractAddresses)
   );
 }
